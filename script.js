@@ -90,7 +90,23 @@ function devolver_cartar(x){
 
 
 function revelacao(){
-    bd.innerHTML = `<div class="carta_final"> <h1> A sua carta final é    </h1> <span class="pcard-back"> </span> </div>`
+    bd.innerHTML = `<div class='carta-container'> 
+                        <div class="carta-final"> 
+                            <div class="face verso">
+                                <span class='pcard-back'> </span>
+                            </div>
+                            <div class="face frente">
+                                <span class="pcard-${relacao[array_cards[10]]}" </span>
+                            </div>
+                        </div>
+                    </div>`
+
+    const carta = bd.querySelector(".carta-final");
+    
+    carta.addEventListener("click",() => {
+        carta.classList.toggle("virada");
+        
+    });
     console.log("A carta que você pensou é " + array_cards[10]);
 }
 
