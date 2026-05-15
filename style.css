@@ -21,7 +21,18 @@ body{
     height: 800px;
     border: 1px solid black;
     border-radius: 1%;
+    transition: transform 0.1s, background-color 0.2s; /* Suaviza o efeito */
 }
+
+[class^="coluna"]:hover{
+    transform: scale(0.95); 
+}
+
+[class^="coluna"]:active{
+    transform: scale(0.80); 
+}
+
+
 
 [class^="pcard-"] {
     width: 100px !important;       /* Altere a largura aqui */
@@ -36,7 +47,7 @@ body{
   top: 50%;           /* Move o topo para o centro vertical da tela */
   left: 50%;          /* Move a esquerda para o centro horizontal da tela */
   transform: translate(-50%, -50%); /* Ajusta o eixo com base no próprio tamanho do texto */
-  
+  font-size: larger;
   margin: 0;          /* Evita desvios causados por margens padrão */
   text-align: center; /* Centraliza as linhas caso o texto quebre em duas ou mais linhas */
 }
