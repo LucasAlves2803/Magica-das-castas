@@ -1,0 +1,50 @@
+body{
+    background-color: rgba(248, 248, 54, 0.952);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+    position: relative; /* Transforma o body na referência de posicionamento */
+      margin: 0;          /* Remove as margens padrão do navegador */
+  height: 100vh;      /* Define a altura como 100% da altura da tela (Viewport Height) */
+  position: relative; /
+}
+
+.coluna1, .coluna2,.coluna3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 800px;
+    border: 1px solid black;
+    border-radius: 1%;
+}
+
+[class^="pcard-"] {
+    width: 100px !important;       /* Altere a largura aqui */
+    height: 228px !important;      /* Altere a altura mantendo a proporção */
+    background-size: contain !important; /* Garante que o vetor se ajuste ao novo tamanho */
+    display: inline-block;         /* Permite que o elemento aceite largura e altura */
+}
+
+
+.texto-centralizado {
+  position: absolute; /* Posiciona o elemento em relação ao body */
+  top: 50%;           /* Move o topo para o centro vertical da tela */
+  left: 50%;          /* Move a esquerda para o centro horizontal da tela */
+  transform: translate(-50%, -50%); /* Ajusta o eixo com base no próprio tamanho do texto */
+  
+  margin: 0;          /* Evita desvios causados por margens padrão */
+  text-align: center; /* Centraliza as linhas caso o texto quebre em duas ou mais linhas */
+}
+
+.carta_final {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin:0;
+}
