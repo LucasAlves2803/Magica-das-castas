@@ -18,6 +18,33 @@ let bd = document.querySelector('body');
 let matriz_de_baralho = new Array (linhas);
 
 
+
+document.addEventListener("DOMContentLoaded",  function(){
+    mensagem_inicial();
+})
+
+function mensagem_inicial(){
+
+    criar_matriz();
+    gerar_baralho();
+    bd.innerHTML = ` <h1> Mágica que descobre a carta </h1>
+      <div class='Apresentacao'> 
+        <span class="pcard-${relacao[array_cards[0]]}">  </span>
+        <span class="pcard-${relacao[array_cards[2]]}">  </span> 
+        <span class="pcard-${relacao[array_cards[10]]}">  </span>
+      </div> 
+      <btn class='botao'> Começar!</btn>
+    `;
+    bd.classList.add("body1");
+
+    let btn = bd.querySelector(".botao");
+    btn.addEventListener("click", ()=> {
+        main();
+    });
+}
+
+
+
 function criar_matriz(){
     for (let i = 0; i < linhas; i++){
         matriz_de_baralho[i] = new Array (colunas);
@@ -122,6 +149,12 @@ function criar_divs(){
     <div class="coluna3">
     
     </div>`;
+    if (bd.classList.contains("body1")){
+        bd.classList.remove("body1");
+        bd.classList.add("body2");
+    }
+    
+    
 
      // 2. Seleciona as divs criadas diretamente de dentro do contêiner 'bd'
     const col1 = bd.querySelector(".coluna1");
@@ -189,9 +222,6 @@ function embaralhar(){
 
 
 
-criar_matriz();
-gerar_baralho();
-main();
 async function main(){ 
     
         await embaralhar();

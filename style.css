@@ -1,4 +1,4 @@
-body{
+.body2{
     background-color: rgba(248, 248, 54, 0.952);
     display: flex;
     flex-direction: row;
@@ -10,6 +10,20 @@ body{
       margin: 0;          /* Remove as margens padrão do navegador */
   height: 100vh;      /* Define a altura como 100% da altura da tela (Viewport Height) */
   position: relative; /
+}
+
+.body1{
+    background-color: rgba(248, 248, 54, 0.952);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+    position: relative; /* Transforma o body na referência de posicionamento */
+    margin: 0;          /* Remove as margens padrão do navegador */
+    height: 100vh;      /* Define a altura como 100% da altura da tela (Viewport Height) */
+    position: relative; /
 }
 
 
