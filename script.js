@@ -7,6 +7,7 @@ const json_cards = {1: "Ás de Copas", 2: "2 de Copas", 3: "3 de Copas", 4: "4 d
 const relacao =     { "Ás de Copas" : 'ah', "2 de Copas" : '2h', "3 de Copas" : '3h',  "4 de Copas" : '4h', "5 de Copas" : '5h',  "6 de Copas" : '6h', "7 de Copas" : '7h', "8 de Copas" : '8h', "9 de Copas" : '9h', "10 de Copas" : '10h', "Valete de Copas" : 'jh', "Dama de Copas" : 'qh', "Rei de Copas" : 'kh',
                      "Ás de Ouros" : 'ad' ,"2 de Ouros" : '2d' , "3 de Ouros" : '3d',  "4 de Ouros" : '4d', "5 de Ouros" : '5d',  "6 de Ouros" : '6d', "7 de Ouros" : '7d', "8 de Ouros" : '8d', "9 de Ouros" : '9d', "10 de Ouros" : '10d', "Valete de Ouros" : 'jd', "Dama de Ouros" : 'qd', "Rei de Ouros" : 'kd',
                     "Ás de Espadas" : 'as' ,"2 de Espadas" : '2s' , "3 de Espadas" : '3s',  "4 de Espadas" : '4s', "5 de Espadas" : '5s',  "6 de Espadas" : '6s', "7 de Espadas" : '7s', "8 de Espadas" : '8s', "9 de Espadas" : '9s', "10 de Espadas" : '10s', "Valete de Espadas" : 'js', "Dama de Espadas" : 'qs', "Rei de Espadas" : 'ks'}
+
 let array_cards = [];
 let array_escolhidas = new Array(22).fill(0); // Índices de 0 a 21
 
@@ -26,22 +27,100 @@ document.addEventListener("DOMContentLoaded",  function(){
 function mensagem_inicial(){
 
     criar_matriz();
-    gerar_baralho();
+    gerar_baralho();    
     bd.innerHTML = ` <h1> Mágica que descobre a carta </h1>
       <div class='Apresentacao'> 
-        <span class="pcard-${relacao[array_cards[0]]}">  </span>
-        <span class="pcard-${relacao[array_cards[2]]}">  </span> 
-        <span class="pcard-${relacao[array_cards[10]]}">  </span>
+        <span class="pcard-back" id='back1'>  </span>
+        <span class="pcard-back" id='back2'>  </span> 
+        <span class="pcard-back" id='back3'>  </span>
       </div> 
-      <btn class='botao'> Começar!</btn>
+      <button class='botao'> Começar!</button>
     `;
     bd.classList.add("body1");
+    
+    
+    // animação do embaralhamento das cartas
+    let promessa1 = (callback) => { setTimeout(()=>{
+        let bc = bd.querySelector("#back1");
+        bc.style.left = "35%";
+        bc.style.transition = "left 0.8s ease";
+        console.log("Tirou a primeira carta");
+        callback();
+    },200); }
+    
 
+    let promessa2 = (callback) => { setTimeout(()=>{
+              let bc = bd.querySelector("#back2");
+              bc.style.left = "65%";
+              bc.style.transition = "left 0.8s ease";
+              console.log("Tirou a segunda carta");
+              callback();
+    },800); }
+
+     let promessa3 = (callback) => { setTimeout(()=>{
+              let bc = bd.querySelector("#back1");
+              bc.style.left = "50%";
+              bc.style.transition = "left 0.8s ease";
+              bc.style.zIndex = 10;
+              console.log("Voltou com a primeira carta");
+              callback();
+    },800); }
+
+     let promessa4 = (callback) => { setTimeout(()=>{
+              let bc = bd.querySelector("#back2");
+              bc.style.left = "50%";
+              bc.style.transition = "left 0.8s ease";
+              bc.style.zIndex = 11;
+              console.log("Voltou com a segunda carta");
+              callback();
+    },800); }
+
+    promessa1( ()=> {
+        promessa2( ()=>{
+            promessa3( ()=>{
+                    promessa4( ()=>{ 
+                    });
+            });
+        });
+    });
+
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    let btn = bd.querySelector(".botao");
+    btn.addEventListener("click", ()=> {
+        mensagem_de_explicacao();
+    });
+}
+
+
+function mensagem_de_explicacao(){
+     bd.innerHTML = ` <h1> Escolha mentalmente uma carta</h1>
+            <div class='linha1'> </div>
+            <div class='linha2'> </div>
+          <div class='linha3'>  </div>
+
+
+     
+      <button class='botao'> Começar!</button>
+    `;
+    mostrar_cartas2();
+
+    
     let btn = bd.querySelector(".botao");
     btn.addEventListener("click", ()=> {
         main();
     });
 }
+
+
 
 
 
@@ -74,6 +153,17 @@ function distribuir_cartas(){
         }
     }
 }
+
+function mostrar_cartas2(){
+        let nome_classe = '';
+        nome_classe = 'linha1';
+        for (let j=0; j < 21; j++){
+            let base  = document.querySelector(`.${nome_classe}`);
+            base.innerHTML += `<span class="pcard-${relacao[array_cards[j]]}"></span>`;
+        }
+        
+    }
+
 
 function mostrar_cartas(){
     let nome_classe = '';
@@ -141,7 +231,9 @@ function revelacao(){
 
 function criar_divs(){
     
-    bd.innerHTML = `<div class="coluna1">
+    bd.innerHTML = `
+    <h1 class='frase'> Clique na coluna onde está a carta </h1>
+    <div class="coluna1">
     </div>
     <div class="coluna2">
 

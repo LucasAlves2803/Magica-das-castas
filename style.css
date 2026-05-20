@@ -34,7 +34,7 @@
     justify-content: space-evenly;
     align-items: center;
     width: 350px;
-    height: 800px;
+    height: 700px;
     border: 1px solid black;
     border-radius: 1%;
     transition: transform 0.1s, background-color 0.2s; /* Suaviza o efeito */
@@ -49,8 +49,30 @@
 }
 
 
+.linha1{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: (3,1fr);
+  flex-wrap: wrap;
+  
+}
+
+.linha1 [class^=pcard-], .linha2 [class^=pcard-], .linha3 [class^=pcard-]{
+  height: 200px;
+  width: 200;
+}
 
 
+
+.frase {
+  position: absolute; /* Posiciona o elemento em relação ao body */
+  top:2.5%;
+  left: 50%;           /* Move o topo para o centro vertical da tela */       /* Move a esquerda para o centro horizontal da tela */
+  transform: translateX(-50%); /* Ajusta o eixo com base no próprio tamanho do texto */
+  font-size: xx-large;
+  margin: 0;          /* Evita desvios causados por margens padrão */
+  text-align: center; /* Centraliza as linhas caso o texto quebre em duas ou mais linhas */
+}
 
 
 .texto-centralizado {
@@ -61,6 +83,20 @@
   font-size: xx-large;
   margin: 0;          /* Evita desvios causados por margens padrão */
   text-align: center; /* Centraliza as linhas caso o texto quebre em duas ou mais linhas */
+}
+
+
+#back1, #back2, #back3{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.botao{
+  width: 90px;
+  height: 40px;
+  margin: 3px;
 }
 
 
